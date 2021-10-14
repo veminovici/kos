@@ -53,11 +53,74 @@ impl Color {
         }
     }
 
+    /// Creates a style using the current color as foregorund color and with underline text.
+    pub fn underline(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_underline: true,
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as foregorund color and with blink text.
+    pub fn blink(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_blink: true,
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as foregorund color and with dimmed text.
+    pub fn dimmed(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_dimmed: true,
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as foregorund color and with reverse text.
+    pub fn reverse(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_reverse: true,
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as foregorund color and with reverse text.
+    pub fn hidden(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_hidden: true,
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as foregorund color and with reverse text.
+    pub fn strikethrough(self) -> Style {
+        Style {
+            fg: Some(self),
+            is_strikethrough: true,
+            ..Style::default()
+        }
+    }
+
     /// Creates a style using the current color as foreground color and the other color as background color.
     pub fn bg(self, color: Color) -> Style {
         Style {
             fg: Some(self),
             bg: Some(color),
+            ..Style::default()
+        }
+    }
+
+    /// Creates a style using the current color as background color and the other color as foreground color.
+    pub fn fg(self, color: Color) -> Style {
+        Style {
+            fg: Some(color),
+            bg: Some(self),
             ..Style::default()
         }
     }
