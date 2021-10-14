@@ -2,13 +2,21 @@
 name = "kos"
 version = "0.1.0"
 edition = "2018"
+authors = ["Vlad Eminovici <veminovici@email.com>"]
+license = "MIT OR Apache-2.0"
+description = "Another crate for ANSI terminal"
+readme = "README.md"
+homepage = "https://github.com/veminovici/kos"
+repository = "https://github.com/veminovici/kos"
+keywords = ["cli", "ansi", "terminal", "console"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-# the profile used for `cargo build`
-[profile.dev]
-panic = "abort" # disable stack unwinding on panic
+[dependencies]
+mio = { version = "0.7", features = ["os-poll", "net"]}
 
-# the profile used for `cargo build --release`
-[profile.release]
-panic = "abort" # disable stack unwinding on panic
+[dev-dependencies]
+log = "0.4"
+env_logger = "0.9"
+structopt = "0.3"
