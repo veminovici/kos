@@ -8,7 +8,10 @@ fn main() {
 
     println!(
         "debug: Here is a '{:?}' example",
-        ITALIC.bold().to_ansi("hello world (italic and bold)")
+        ITALIC
+            .bold()
+            .underline()
+            .to_ansi("hello world (italic, bold, underline)")
     );
 
     println!(
@@ -18,19 +21,22 @@ fn main() {
 
     println!(
         "debug: Here is a '{:?}' example",
-        BLUE.bold().to_ansi("Hello World! (blue and bold)")
+        BLUE.bold()
+            .blink()
+            .to_ansi("Hello World! (blue, bold, and blink)")
     );
-
-    let s = BLUE.bg(WHITE);
-    println!("style={:?}", s);
 
     println!(
         "display: Here is a '{}' example",
-        BLUE.bg(WHITE).to_ansi("Hello World! (blue and white)")
+        BLUE.bg(WHITE)
+            .hidden()
+            .to_ansi("Hello World! (blue, white, hidden)")
     );
 
     println!(
         "debug: Here is a '{}' example",
-        RED.bg(YELLOW).to_ansi("Hello world! (red and yellow)")
+        RED.bg(YELLOW)
+            .strikethrough()
+            .to_ansi("Hello world! (red, yellow, and strikethrough)")
     );
 }

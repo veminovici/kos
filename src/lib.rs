@@ -13,6 +13,12 @@ mod style;
 pub struct Style {
     is_bold: bool,
     is_italic: bool,
+    is_underline: bool,
+    is_dimmed: bool,
+    is_blink: bool,
+    is_reverse: bool,
+    is_hidden: bool,
+    is_strikethrough: bool,
     fg: Option<Color>,
     bg: Option<Color>,
 }
