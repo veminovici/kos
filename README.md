@@ -12,6 +12,24 @@ Just another crate for ANSI.
 
 </br>
 
+### Example
+
+```rust
+use kos::*;
+
+println!(
+    "display: Here is a '{}' example",
+    ITALIC
+        .to_ansi("hello world"));
+
+println!(
+    "debug: Here is a '{}' example",
+    RED.bg(YELLOW)
+        .strikethrough()
+        .to_ansi("Hello world! (red, yellow, and strikethrough)")
+);
+```
+
 ### A *thank you* note !!!
 
 > You can contact me at veminovici@hotmail.com. Code designed and written in Päädu, on the beautiful island of [**Saaremaa**](https://goo.gl/maps/DmB9ewY2R3sPGFnTA), Estonia.
