@@ -20,4 +20,17 @@ fn main() {
         "debug: Here is a '{:?}' example",
         BLUE.bold().to_ansi("Hello World! (blue and bold)")
     );
+
+    let s = BLUE.bg(WHITE);
+    println!("style={:?}", s);
+
+    println!(
+        "display: Here is a '{}' example",
+        BLUE.bg(WHITE).to_ansi("Hello World! (blue and white)")
+    );
+
+    println!(
+        "debug: Here is a '{}' example",
+        RED.bg(YELLOW).to_ansi("Hello world! (red and yellow)")
+    );
 }

@@ -1,5 +1,6 @@
-use super::{AnsiStyled, Style};
+use super::{AnsiStyled, Color, Style};
 use std::borrow::{Cow, ToOwned};
+use std::fmt::Debug;
 
 impl Default for Style {
     fn default() -> Self {
@@ -7,7 +8,18 @@ impl Default for Style {
             is_bold: false,
             is_italic: false,
             fg: None,
+            bg: None,
         }
+    }
+}
+
+impl Debug for Style {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "b={} i={} fg={:?} bg={:?}",
+            self.is_bold, self.is_italic, self.fg, self.bg
+        )
     }
 }
 
@@ -16,6 +28,7 @@ pub static ITALIC: Style = Style {
     is_bold: false,
     is_italic: true,
     fg: None,
+    bg: None,
 };
 
 static RESET: &str = "\x1B[0m";
@@ -43,6 +56,22 @@ impl Style {
         }
     }
 
+    /// Sets the foreground color
+    pub fn fg(&self, color: Color) -> Self {
+        Self {
+            fg: Some(color),
+            ..*self
+        }
+    }
+
+    /// Sets the background color
+    pub fn bg(&self, color: Color) -> Self {
+        Self {
+            bg: Some(color),
+            ..*self
+        }
+    }
+
     /// Takes an input and gets the ansi styled back.
     pub fn to_ansi<'a, I, S: 'a + ToOwned + ?Sized>(self, input: I) -> AnsiStyled<'a, S>
     where
@@ -64,6 +93,10 @@ impl Style {
         }
 
         if self.fg.is_some() {
+            return false;
+        }
+
+        if self.bg.is_some() {
             return false;
         }
 
@@ -103,6 +136,14 @@ impl Style {
 
             if self.is_italic {
                 write_char('3')?
+            }
+
+            if let Some(bg) = &self.bg {
+                if written_anything {
+                    write!(w, ";")?;
+                }
+                written_anything = true;
+                bg.write_background(w)?;
             }
 
             if let Some(fg) = &self.fg {
