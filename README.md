@@ -3,7 +3,7 @@
 Just another crate for ANSI.
 
 [![CI Pipeline](https://github.com/veminovici/kos/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/veminovici/kos/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/veminovici/kos/branch/main/graph/badge.svg?token=1QV7SGC7B7)](https://codecov.io/gh/veminovici/kos)
+[![codecov](https://codecov.io/gh/veminovici/kos/branch/master/graph/badge.svg?token=bp8S7RfQld)](https://codecov.io/gh/veminovici/kos)
 [![Coverage Status](https://coveralls.io/repos/github/veminovici/kos/badge.svg)](https://coveralls.io/github/veminovici/kos)
 [![Last commit](https://img.shields.io/github/last-commit/veminovici/kos)](https://github.com/veminovici/kos)
 [![Repo size](https://img.shields.io/github/repo-size/veminovici/kos)](https://github.com/veminovici/kos)
